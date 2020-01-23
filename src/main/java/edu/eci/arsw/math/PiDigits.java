@@ -19,6 +19,7 @@ public class PiDigits {
      * @return An array containing the hexadecimal digits.
      */
     public static byte[] getDigits(int start, int count) {
+        
         if (start < 0) {
             throw new RuntimeException("Invalid Interval");
         }
@@ -46,7 +47,19 @@ public class PiDigits {
 
         return digits;
     }
-
+    
+    public static byte[] getDigits(int start, int count, int N){
+        PiThread[] hilos = new PiThread[N];
+        for (int i = 0; i<hilos.length; i++){
+            int s = (Math.floorDiv(count,N)*i),c =(Math.floorDiv(count,N)*(i+1)), r=count%N;
+            
+            hilos[i] = new PiThread(0,0,0);
+            hilos[i].start();
+            
+        }
+        byte[] digits = new byte[count];
+        return digits;
+    }
     /// <summary>
     /// Returns the sum of 16^(n - k)/(8 * k + m) from 0 to k.
     /// </summary>
